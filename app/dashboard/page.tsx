@@ -1,9 +1,28 @@
 "use client";
-import { useEffect, useState } from "react";
-import { fetchAnimeData } from "../utils/api";
+//import { useEffect, useState } from "react";
+//import { fetchAnimeData } from "../utils/api";
 
-const Dashboard = () => {
-  const [animes, setAnimes] = useState([]);
+interface AnimeI {
+  mal_id: number;
+  images: {
+    jpg: {
+      image_url: string;
+      large_image_url: string;
+      small_image_url: string;
+    };
+  };
+  title: string;
+  synopsis: string;
+}
+
+const fetchAnimes = async () => {
+  const animeListRes = await fetch("https://api.jikan.moe/v4/anime");
+  const animeList = await animeListRes.json();
+  return animeList.data as AnimeI[];
+};
+
+export default async function Dashboard() {
+  /*const [animes, setAnimes] = useState([]);
 
   useEffect(() => {
     const fetchAnimes = async () => {
@@ -16,8 +35,8 @@ const Dashboard = () => {
     };
 
     fetchAnimes();
-  }, []);
-
+  }, []);*/
+  const animes = await fetchAnimes();
   return (
     <div className="flex flex-wrap justify-center">
       {animes.map((anime) => (
@@ -42,6 +61,4 @@ const Dashboard = () => {
       ))}
     </div>
   );
-};
-
-export default Dashboard;
+}

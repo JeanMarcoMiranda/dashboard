@@ -1,5 +1,5 @@
 import React from "react";
-import "./globals.css";
+import "../styles/globals.css";
 import { HeaderLayoutComponent as Header } from "../components/Header";
 
 export default function RootLayout({
