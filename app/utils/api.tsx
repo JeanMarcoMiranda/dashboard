@@ -1,6 +1,6 @@
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export async function fetchAnimeData(
+export async function fetchData(
   endpoint: string,
   params?: Record<string, string>
 ): Promise<any> {

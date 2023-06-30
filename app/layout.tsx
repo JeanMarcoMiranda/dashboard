@@ -12,7 +12,7 @@ export default function RootLayout({
       <head>
         <title>Nextjs dashboard project</title>
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <Header />
         {children}
       </body>
